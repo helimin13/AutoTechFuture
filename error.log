@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "C:\AutoTechFuture\app.py", line 27, in <module>
+    from models import User, BlogPost, Category, FutureTech, Comment, Like
+  File "C:\AutoTechFuture\models.py", line 3, in <module>
+    from app import db
+  File "C:\AutoTechFuture\app.py", line 27, in <module>
+    from models import User, BlogPost, Category, FutureTech, Comment, Like
+ImportError: cannot import name 'User' from 'models' (consider renaming 'C:\\AutoTechFuture\\models.py' if it has the same name as a library you intended to import)
