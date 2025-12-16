@@ -345,7 +345,21 @@ def inject_data():
     return dict(categories=categories)
 
 # Create tables on startup
+# Create tables on startup
 with app.app_context():
+    # Ensure database directory exists (Critical for PythonAnywhere)
+    try:
+        db_uri = app.config['SQLALCHEMY_DATABASE_URI']
+        if db_uri.startswith('sqlite:///'):
+            db_path = db_uri.replace('sqlite:///', '')
+            db_dir = os.path.dirname(db_path)
+            if db_dir and not os.path.exists(db_dir):
+                print(f"Creating database directory: {db_dir}")
+                os.makedirs(db_dir)
+            print(f"Database path: {db_path}")
+    except Exception as e:
+        print(f"Error checking database path: {e}")
+
     db.create_all()
 
 if __name__ == '__main__':
